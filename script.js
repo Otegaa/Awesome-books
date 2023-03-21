@@ -1,9 +1,11 @@
 const bookSection = document.querySelector('.book-container');
 const form = document.querySelector('.form');
+const search = document.querySelector('.search');
 
 let collection = [];
 
 const awesomeBooks = () => {
+  bookSection.innerHTML = '';
   collection.map((book) => {
     bookSection.innerHTML += `
       <div class="highlighted-books">
@@ -11,7 +13,7 @@ const awesomeBooks = () => {
             <h3 class="added-book-title">${book.title}</h3>
             <h3 class="added-book-author">${book.author}</h3>
           </div>
-          <button class="remove-book">Remove</button>
+          <button class="remove-book" onclick=removeBook(${book.id})>Remove</button>
           <hr />
         </div>
     `;
@@ -23,15 +25,20 @@ if (localStorage.books) {
   collection = JSON.parse(localStorage.getItem('books'));
 }
 
+const setStorage = () => {
+  localStorage.setItem('books', JSON.stringify(collection));
+};
+
 const addBook = (e) => {
   e.preventDefault();
   const book = {};
+  book.id = Math.floor(Math.random() * 10000000);
   book.title = document.querySelector('.book-title').value;
   book.author = document.querySelector('.book-author').value;
 
   if (book.title && book.author) {
     collection.push(book);
-    localStorage.setItem('books', JSON.stringify(collection));
+    setStorage();
     awesomeBooks();
   }
 
@@ -39,11 +46,14 @@ const addBook = (e) => {
   document.querySelector('.book-author').value = '';
 };
 
+awesomeBooks();
+
 form.addEventListener('submit', addBook);
 
-// const removeBook = (book) => {
-//   collection.filter((item) => item !== book);
-//   localStorage.setItem("books", JSON.stringify(collection));
-// };
+const removeBook = (id) => {
+  collection = collection.filter((item) => item.id !== id);
+  awesomeBooks();
+  setStorage();
+};
 
-awesomeBooks();
+search.addEventListener('click', removeBook);
