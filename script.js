@@ -1,59 +1,82 @@
-const bookSection = document.querySelector('.book-container');
-const form = document.querySelector('.form');
-const search = document.querySelector('.search');
-
-let collection = [];
-
-const awesomeBooks = () => {
-  bookSection.innerHTML = '';
-  collection.map((book) => {
-    bookSection.innerHTML += `
-      <div class="highlighted-books">
-          <div class="added-book">
-            <h3 class="added-book-title">${book.title}</h3>
-            <h3 class="added-book-author">${book.author}</h3>
-          </div>
-          <button class="remove-book" onclick=removeBook(${book.id})>Remove</button>
-          <hr />
-        </div>
-    `;
-    return book;
-  });
-};
-
-if (localStorage.books) {
-  collection = JSON.parse(localStorage.getItem('books'));
-}
-
-const setStorage = () => {
-  localStorage.setItem('books', JSON.stringify(collection));
-};
-
-const addBook = (e) => {
-  e.preventDefault();
-  const book = {};
-  book.id = Math.floor(Math.random() * 10000000);
-  book.title = document.querySelector('.book-title').value;
-  book.author = document.querySelector('.book-author').value;
-
-  if (book.title && book.author) {
-    collection.push(book);
-    setStorage();
-    awesomeBooks();
+class AwesomeBooks {
+  constructor() {
+    this.title = document.querySelector('.book-title');
+    this.author = document.querySelector('.book-author');
+    this.books = 'books';
+    this.getStorage = JSON.parse(localStorage.getItem(this.books)) || [];
+    this.bookSection = document.querySelector('.book-container');
+    this.form = document.querySelector('.form');
+    this.document = document;
   }
 
-  document.querySelector('.book-title').value = '';
-  document.querySelector('.book-author').value = '';
-};
+  displayBooks() {
+    this.bookSection.innerHTML = '';
+    if (this.getStorage.length === 0) {
+      const msg = this.document.createElement('h3');
+      msg.textContent = 'No books yet! Add some!';
+      msg.classList.add('display-msg');
+      this.bookSection.appendChild(msg);
+    } else {
+      this.getStorage.forEach((book) => {
+        this.bookSection.innerHTML += `
+        <div class="highlighted-books">
+          <div class="added-book">
+            <h3 class="added-book-item"> "${book.title}" by ${book.author}</h3>
+          </div>
+          <button class="remove-book" id = ${book.id}>Remove</button>
+        </div>
+    `;
+      });
+    }
+  }
 
-awesomeBooks();
+  setStorage() {
+    localStorage.setItem(this.books, JSON.stringify(this.getStorage));
+  }
 
-form.addEventListener('submit', addBook);
+  addBooks() {
+    const book = {};
+    const title = this.title.value;
+    const author = this.author.value;
+    const id = Math.floor(Math.random() * 10000000);
+    book.id = id;
+    book.title = title;
+    book.author = author;
 
-const removeBook = (id) => {
-  collection = collection.filter((item) => item.id !== id);
-  awesomeBooks();
-  setStorage();
-};
+    if (title && author) {
+      this.getStorage.push(book);
+      this.setStorage();
+      this.displayBooks();
+    }
 
-search.addEventListener('click', removeBook);
+    this.title = '';
+    this.author = '';
+  }
+
+  removeBooks(id) {
+    this.getStorage = this.getStorage.filter((book) => book.id !== Number(id));
+    this.displayBooks();
+    this.setStorage();
+  }
+
+  getBooks() {
+    this.form.addEventListener('submit', () => this.addBooks());
+    this.displayBooks();
+  }
+
+  deleteBooks() {
+    this.document.addEventListener('click', (e) => {
+      const target = e.target.closest('.remove-book');
+      if (!target) return;
+      this.removeBooks(target.id);
+    });
+  }
+
+  init() {
+    this.getBooks();
+    this.deleteBooks();
+  }
+}
+
+const books = new AwesomeBooks();
+books.init();
