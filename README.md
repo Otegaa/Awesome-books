@@ -92,7 +92,7 @@ Install this project with:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- Implement features with classes.
+- Create dynamic navigation to different pages.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

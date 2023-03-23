@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
 
 * {
   margin: 0;
@@ -17,36 +17,99 @@ html {
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
 }
 
 .container {
-  padding-top: 5rem;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .heading {
   font-size: 3rem;
   font-weight: 700;
   margin-bottom: 2rem;
+  text-align: center;
+}
+
+.book-container {
+  border: 2px solid #000;
+  margin-bottom: 2.5rem;
+}
+
+.black-line {
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid #000;
+  width: 70px;
+  margin-bottom: 2.5rem;
+}
+
+.highlighted-books {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.5rem 0.2rem;
+  gap: 20rem;
+}
+
+.highlighted-books:nth-child(odd) {
+  background-color: #eee;
+}
+
+.highlighted-books:nth-child(even) {
+  background-color: #fff;
 }
 
 .added-book {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin-bottom: 1rem;
 }
 
 .remove-book {
-  margin-bottom: 1rem;
+  border: 2px solid #000;
+  background-color: #fff;
+  padding: 0.5rem;
+  transition: all 0.3s;
+}
+
+.add-book {
+  padding: 0.3rem 0.7rem;
+  border: 2px solid #000;
+  transition: all 0.3s;
+  align-self: flex-end;
+}
+
+.remove-book:hover,
+.add-book:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0.5rem 4rem rgba(0, 0, 0, 0.4);
 }
 
 .form {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
+  gap: 1.5rem;
+  width: 70%;
+  margin: 3rem auto 0;
 }
 
-.form input {
-  width: 100px;
+.form-heading {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.book-title,
+.book-author {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #000;
+}
+
+.display-msg {
+  padding: 2rem;
+  font-size: 1.5rem;
 }
