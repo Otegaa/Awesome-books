@@ -10,29 +10,69 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="heading">All Awesome Books</h1>
-      <div class="book-container"></div>
+      <header class="header">
+        <nav class="navbar">
+          <h1 class="nav-heading">Awesome Books</h1>
+          <ul class="nav-links">
+            <li class="list-page">List</li>
+            <li>|</li>
+            <li class="add-page">Add new</li>
+            <li>|</li>
+            <li class="contact-page">Contact</li>
+          </ul>
+        </nav>
+        <div class="date-input">
+          <p class="date"></p>
+          <p class="time"></p>
+        </div>
+      </header>
 
-      <i class="black-line"></i>
+      <main class="main">
+        <section class="list">
+          <h2 class="heading">All Awesome Books</h2>
+          <div class="book-container"></div>
 
-      <form action="#" class="form">
-        <legend class="form-heading">Add a new Book</legend>
-        <input
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Title"
-          class="book-title"
-        />
-        <input
-          type="text"
-          name="author"
-          id="author"
-          placeholder="Author"
-          class="book-author"
-        />
-        <input type="submit" value="Add" class="add-book" />
-      </form>
+          <i class="black-line"></i>
+        </section>
+
+        <section class="add">
+          <form action="#" class="form">
+            <legend class="form-heading">Add a new Book</legend>
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Title"
+              class="book-title"
+            />
+            <input
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author"
+              class="book-author"
+            />
+            <input type="submit" value="Add" class="add-book" />
+          </form>
+        </section>
+
+        <section class="contact">
+          <h2 class="heading">Contact Information</h2>
+          <p class="reach-out">
+            Do you have any questions or do you want to just say "Hello"? <br />
+            You can reach out to us!
+          </p>
+          <ul class="reach-out-list">
+            <li>Our email: mail@mail.com</li>
+            <li>Our phone number: 0043267927899</li>
+            <li>Our address: Streetname 22, 84503 City, Country</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="copyright">Copyright &copy; Otega Ekiugbo</div>
+      </footer>
     </div>
     <script src="./script.js"></script>
   </body>
