@@ -49,8 +49,8 @@ class AwesomeBooks {
       this.displayBooks();
     }
 
-    this.title = '';
-    this.author = '';
+    this.title.value = '';
+    this.author.value = '';
   }
 
   removeBooks(id) {
