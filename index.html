@@ -10,26 +10,61 @@
   </head>
   <body>
     <div class="container">
-      <h1 class="heading">Awesome Books</h1>
-      <div class="book-container"></div>
+      <header class="header">
+        <nav class="navbar">
+          <h1 class="nav-heading">Awesome Books</h1>
+          <ul class="nav-links">
+            <li>List</li>
+            <li>Add new</li>
+            <li>Contact</li>
+          </ul>
+        </nav>
+        <div class="date"></div>
+      </header>
 
-      <form action="#" class="form">
-        <input
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Title"
-          class="book-title"
-        />
-        <input
-          type="text"
-          name="author"
-          id="author"
-          placeholder="Author"
-          class="book-author"
-        />
-        <input type="submit" value="Add" class="add-book" />
-      </form>
+      <main class="main">
+        <section class="list">
+          <h2 class="heading">Awesome Books</h2>
+          <div class="book-container"></div>
+        </section>
+
+        <section class="add">
+          <form action="#" class="form">
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Title"
+              class="book-title"
+            />
+            <input
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author"
+              class="book-author"
+            />
+            <input type="submit" value="Add" class="add-book" />
+          </form>
+        </section>
+
+        <section class="contact">
+          <h2 class="heading">Contact</h2>
+          <p class="reach-out">
+            Do you have any questions or do you want to just say "Hello"? <br />
+            You can reach out to us!
+          </p>
+          <ul class="reach-out-list">
+            <li>Our email: mail@mail.com</li>
+            <li>Our phone number: 0043267927899</li>
+            <li>Our address: Streetname 22, 84503 City, Country</li>
+          </ul>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="copyright">Copyright &copy; Otega Ekiugbo</div>
+      </footer>
     </div>
   </body>
 </html>
