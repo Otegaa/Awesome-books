@@ -1,6 +1,6 @@
 const bookSection = document.querySelector('.book-container');
 const form = document.querySelector('.form');
-const error = document.querySelector('.search');
+const search = document.querySelector('.search');
 
 let collection = [];
 
@@ -56,4 +56,4 @@ const removeBook = (id) => {
   setStorage();
 };
 
-error.addEventListener('click', removeBook);
+search.addEventListener('click', removeBook);
